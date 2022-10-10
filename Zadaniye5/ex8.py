@@ -1,16 +1,17 @@
 def add():
-    a = 0
-    i = 0
-    i_max = 0
-    b = int(input())
-    while b != 0:
-        if a == b:
-            i += 1
+    len = 1
+    len_max = 1
+    x = y = 1
+    i = 1
+    while x != 0:
+        x = int(input("Введите число: "))
+        if y == x:
+            len += 1
         else:
-            a = b
-            i_max = max(i_max, i)
-            i = 1
-        b = int(input())
-    i_max = max(i_max, i)
-    return(i_max)
-print(add())
+            if len > len_max:
+                len_max = len
+            len = 1
+        y = x
+        i += 1
+    return(len_max)
+print("Наибольшее число подряд идущих элементов этой последовательности, равных друг другу:", add())    
