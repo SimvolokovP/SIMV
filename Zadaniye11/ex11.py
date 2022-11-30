@@ -2,13 +2,22 @@
 import json
 import requests
 from pprint import pprint
-username = "web-platform-tests"
-url = f"https://api.github.com/users/{username}"
-def write(data, filename):
-    data = json.dumps(data)
-    data = json.loads(str(data))
-    with open(filename, 'w', encoding= 'utf-8') as file:
+from tkinter import*
+def write():
+    with open('data.json','w') as file:
+        username = txt_box.get()
+        url = f"https://api.github.com/users/{username}"
+        data = requests.get(url).json()
         json.dump(data, file, indent = 4)
-n_data = requests.get(url).json()
-pprint(n_data)    
-write(n_data, 'data.json')
+    pprint(data)
+
+root = Tk()
+root.title('Задание-11')
+root.geometry('600x300')
+name = Label(root, text = 'Вараинт 72, "web-platform-tests"', font = ('Times new roman', 18))
+name.pack(expand=True)
+txt_box = Entry(root,width=40,font=('Times new roman', 14))
+txt_box.pack(expand=True)
+button = Button(root, text = 'клик',command = write)
+button.pack(expand=True)
+root.mainloop()
