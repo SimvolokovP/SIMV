@@ -1,34 +1,6 @@
-{
-    "login": "web-platform-tests",
-    "id": 37226233,
-    "node_id": "MDEyOk9yZ2FuaXphdGlvbjM3MjI2MjMz",
-    "avatar_url": "https://avatars.githubusercontent.com/u/37226233?v=4",
-    "gravatar_id": "",
-    "url": "https://api.github.com/users/web-platform-tests",
-    "html_url": "https://github.com/web-platform-tests",
-    "followers_url": "https://api.github.com/users/web-platform-tests/followers",
-    "following_url": "https://api.github.com/users/web-platform-tests/following{/other_user}",
-    "gists_url": "https://api.github.com/users/web-platform-tests/gists{/gist_id}",
-    "starred_url": "https://api.github.com/users/web-platform-tests/starred{/owner}{/repo}",
-    "subscriptions_url": "https://api.github.com/users/web-platform-tests/subscriptions",
-    "organizations_url": "https://api.github.com/users/web-platform-tests/orgs",
-    "repos_url": "https://api.github.com/users/web-platform-tests/repos",
-    "events_url": "https://api.github.com/users/web-platform-tests/events{/privacy}",
-    "received_events_url": "https://api.github.com/users/web-platform-tests/received_events",
-    "type": "Organization",
-    "site_admin": false,
-    "name": null,
-    "company": null,
-    "blog": "https://web-platform-tests.org/",
-    "location": null,
-    "email": null,
-    "hireable": null,
-    "bio": null,
-    "twitter_username": null,
-    "public_repos": 18,
-    "public_gists": 0,
-    "followers": 115,
-    "following": 0,
-    "created_at": "2018-03-09T20:18:55Z",
-    "updated_at": "2022-11-01T12:10:17Z"
-}
+company:None
+created_at:2018-03-09T20:18:55Z
+email:None
+id:37226233
+name:None
+url:https://api.github.com/users/web-platform-tests

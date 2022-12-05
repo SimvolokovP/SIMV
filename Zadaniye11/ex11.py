@@ -8,16 +8,22 @@ def write():
         username = txt_box.get()
         url = f"https://api.github.com/users/{username}"
         data = requests.get(url).json()
-        json.dump(data, file, indent = 4)
+        keys = ['company', 'created_at', 'email', 'id', 'name', 'url']
+        for i in keys:
+            if i in data:
+                file.write(f"{i}:{data[i]}" + '\n')    
     pprint(data)
 
-root = Tk()
-root.title('Задание-11')
-root.geometry('600x300')
-name = Label(root, text = 'Вараинт 72, "web-platform-tests"', font = ('Times new roman', 18))
-name.pack(expand=True)
-txt_box = Entry(root,width=40,font=('Times new roman', 14))
-txt_box.pack(expand=True)
-button = Button(root, text = 'клик',command = write)
-button.pack(expand=True)
-root.mainloop()
+
+window = Tk()
+window.title('Задание-11')
+lbl = Label(window, text="Привет!Введи имя репозитория!",font=(24))
+lbl.grid(column=0, row=0)
+lbl2 = Label(window, text='#последние цифры зачетки = 72, репозиторий: "web-platform-tests"')
+lbl2.grid(column=0, row=2)
+window.geometry('600x300')
+txt_box = Entry(window,width=40,font=('Times new roman', 12),background='yellow')
+txt_box.grid(column=0, row=1)
+button = Button(window, text = 'клик',command = write)
+button.grid(column=0, row=3)
+window.mainloop()
