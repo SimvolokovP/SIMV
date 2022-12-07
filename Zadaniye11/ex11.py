@@ -4,7 +4,7 @@ import requests
 from pprint import pprint
 from tkinter import*
 def write():
-    with open('data.json','w') as file:
+    with open('data.txt','w') as file:
         username = txt_box.get()
         url = f"https://api.github.com/users/{username}"
         data = requests.get(url).json()
