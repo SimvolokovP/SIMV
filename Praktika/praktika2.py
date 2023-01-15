@@ -1,6 +1,10 @@
 from tkinter import*
 from tkinter import ttk
 from tkinter import messagebox as mb
+import logging
+
+
+
 
 
 
@@ -15,7 +19,7 @@ with open('atm.txt') as file:
     n1000 = int(file.readline())
 print(n100, n200, n500, n1000)
 
-dep = 250
+dep = 1000
 
 def save():
     lines = [str(n100), str(n200), str(n500), str(n1000)]
@@ -32,7 +36,8 @@ def ready():
 
 def ok():
     code = code_text.get()
-    if len(code) == 4:                      
+    if len(code) == 4:  
+        logging.info("Пин-код пользователя: "+ code)                    
         if code == '0000':
             status = 'admin'
             headtext.configure(text='Меню банкомата(админ)')
@@ -52,6 +57,7 @@ def ok():
             lbl_1000.grid(column=0,row=4)
             var_1000.grid(column=1,row=4)
             btn_plus1000.grid(column=2,row=4)
+            btn_logg.grid(column=0,row=6)
         else:
             btn_ok.destroy()
             headtext.configure(text='Меню банкомата')
@@ -80,6 +86,7 @@ def deposite():
     value = balance.get()   
     balance.set(value + int(summa))
     dep += int(summa) 
+    logging.info(f"Внесена сумма :{str(summa)}.")
     m_dep()
     print(dep)
 
@@ -95,6 +102,7 @@ def w100():
             balance.set(value - 100)
             dep -= 100 
             non_money.configure(text="")
+            logging.info(f"Снято 100 руб")
         else:
             m_non_balance()
     else:
@@ -112,6 +120,7 @@ def w200():
             dep -= 200
             print(dep)
             non_money.configure(text="")
+            logging.info(f"Снято 200 руб")
         else:
             m_non_balance() 
     else:
@@ -128,6 +137,7 @@ def w500():
             balance.set(value - 500)
             dep -= 500
             non_money.configure(text="")
+            logging.info(f"Снято 500 руб")
         else:
             m_non_balance()
     else:
@@ -143,6 +153,7 @@ def w1000():
             balance.set(value - 1000)     
             dep -= 1000
             non_money.configure(text="")
+            logging.info(f"Снято 1000 руб")
         else:
             m_non_balance()
     else:
@@ -169,11 +180,14 @@ def plus1000():
     value = pok_n1000.get()
     pok_n1000.set(value + 1)
     n1000 += 1     
-
-
-
-
-
+def logg():
+    logg_screen = Toplevel(window)
+    logg_screen.title('Logg')
+    with open("py_log.log") as file:
+        int_number = file.read()
+        print(int_number)
+    logg_lbl = Label(logg_screen, text=int_number,font=(24))  
+    logg_lbl.grid(column=0, row=0)  
 
 
 window = Tk()
@@ -214,7 +228,7 @@ btn_w1000 = Button(window, text = '1000',command = w1000)
 deposite_entry = Entry(window,width=40,font=('Times new roman', 8),background='yellow')
 deposite_button = Button(window, text = 'Внести деньги',command = deposite)
 non_money = Label(window, text="",font=(4))
-btn_save = Button(window, text = 'save',command = save)
+btn_save = Button(window, text = 'Сохранить',command = save)
 lbl_100 = Label(window, text="В банкомате купюр по 100 рублей:",font=(10))
 lbl_200 = Label(window, text="В банкомате купюр по 200 рублей:",font=(10))
 lbl_500 = Label(window, text="В банкомате купюр по 500 рублей:",font=(10))
@@ -224,6 +238,7 @@ btn_plus100 = Button(window, text = '+',command = plus100)
 btn_plus200 = Button(window, text = '+',command = plus200)
 btn_plus500 = Button(window, text = '+',command = plus500)
 btn_plus1000 = Button(window, text = '+',command = plus1000)
+btn_logg = Button(window, text = 'Логи',command = logg)
 
 def m_dep():
     mb.showinfo(
@@ -237,6 +252,18 @@ def m_non_balance():
     mb.showwarning(
                 "Ошибка!!!", 
                 "На вашем балансе недостаточно средств")                  
+
+
+
+logging.basicConfig(level=logging.INFO, filename="py_log.log",filemode="w",
+                    format="%(asctime)s %(levelname)s %(message)s")
+logging.debug("A DEBUG Message")
+logging.info("An INFO")
+logging.warning("A WARNING")
+logging.error("An ERROR")
+logging.critical("A message of CRITICAL severity")
+
+
 
 
 
