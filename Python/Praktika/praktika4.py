@@ -3,6 +3,7 @@ from tkinter import*
 from tkinter import ttk
 from tkinter import messagebox as mb
 import logging
+from PIL import ImageTk
 import os
 
 
@@ -11,15 +12,28 @@ status = ''
 
 window_main = Tk()
 window_main.title('Банкомат')
+window_main.geometry('720x350')
+window_main["bg"] = "#D29CFF"
 
-
-
+i_ready = ImageTk.PhotoImage(file="C:\\Users\\79521\\Documents\\GitHub\\SimvolokovPE\\Praktika\\456\\ready.png")
+i_ok = ImageTk.PhotoImage(file="C:\\Users\\79521\\Documents\\GitHub\\SimvolokovPE\\Praktika\\456\\ok.png")
+i_logo = ImageTk.PhotoImage(file="C:\\Users\\79521\\Documents\\GitHub\\SimvolokovPE\\Praktika\\456\\logo.png")
+i_156 = ImageTk.PhotoImage(file="C:\\Users\\79521\\Documents\\GitHub\\SimvolokovPE\\Praktika\\456\\156.png")
+i_balance = ImageTk.PhotoImage(file="C:\\Users\\79521\\Documents\\GitHub\\SimvolokovPE\\Praktika\\456\\btn1.png")
+i_close = ImageTk.PhotoImage(file="C:\\Users\\79521\\Documents\\GitHub\\SimvolokovPE\\Praktika\\456\\btn2.png")
+i_deposite = ImageTk.PhotoImage(file="C:\\Users\\79521\\Documents\\GitHub\\SimvolokovPE\\Praktika\\456\\input.png")
+i_withrow = ImageTk.PhotoImage(file="C:\\Users\\79521\\Documents\\GitHub\\SimvolokovPE\\Praktika\\456\\vyvod.png")
+i_50 = ImageTk.PhotoImage(file="C:\\Users\\79521\\Documents\\GitHub\\SimvolokovPE\\Praktika\\456\\50.png")
+i_100 = ImageTk.PhotoImage(file="C:\\Users\\79521\\Documents\\GitHub\\SimvolokovPE\\Praktika\\456\\100.png")
+i_500 = ImageTk.PhotoImage(file="C:\\Users\\79521\\Documents\\GitHub\\SimvolokovPE\\Praktika\\456\\500.png")
+i_1000 = ImageTk.PhotoImage(file="C:\\Users\\79521\\Documents\\GitHub\\SimvolokovPE\\Praktika\\456\\1000.png")
+i_logg = ImageTk.PhotoImage(file="C:\\Users\\79521\\Documents\\GitHub\\SimvolokovPE\\Praktika\\456\\logg.png")
 def f_start():
     logging.info("Старт работы! ")
     btn_start.destroy()
     txt_head.config(text='Введите ваш пин-код: ')
-    btn_ok.grid(row=4, sticky=N)
-    ent_pin.grid(row=3, sticky=N)
+    btn_ok.grid(row=4, sticky=N,column=5)
+    ent_pin.grid(row=3, sticky=N,column=5)
 
 
 def f_load():
@@ -57,10 +71,14 @@ def f_balance():
 
     window_balance = Toplevel(window_main)
     window_balance.title('Баланс')
-    Label(window_balance,text='Ваш текущий баланс: ',font=('Calibri',14)).grid(row=0,sticky=N)
-    Label(window_balance,text=details_balance,font=('Calibri',14)).grid(row=1,sticky=N)
-    btn_exit_balance = Button(window_balance, text='Закрыть', font=('Calibri',12),width=20,command=f_exit_balance)
-    btn_exit_balance.grid(row=2,sticky=N)
+    window_balance.geometry('720x350')
+    window_balance["bg"] = "#D29CFF"
+    logo = Label(window_balance, image=i_logo,background="#D29CFF")
+    logo.grid(row=0,sticky=N,column=0)
+    Label(window_balance,text='Ваш текущий баланс: ',font=('Calibri',25),background="#D29CFF").grid(row=0,sticky=N,column=3)
+    Label(window_balance,text=details_balance,font=('Calibri',25),background="#D29CFF").grid(row=0,sticky=N,column=4)
+    btn_exit_balance = Button(window_balance, text='Закрыть',image=i_close,command=f_exit_balance,background="#D29CFF")
+    btn_exit_balance.grid(row=2,sticky=N,column=3)
 
 def f_deposite():
     global window_deposite
@@ -76,13 +94,15 @@ def f_deposite():
     print(details_balance)
     window_deposite = Toplevel(window_main)
     window_deposite.title('Ввод средств')
-    Label(window_deposite,text='Сумма: ',font=('Calibri',14)).grid(row=1,sticky=N)
-    lbl_current_balance = Label(window_deposite,text='Текущий баланс: '+ details_balance,font=('Calibri',14))
+    window_deposite.geometry('720x350')
+    window_deposite["bg"] = "#D29CFF"
+    Label(window_deposite,text='Сумма внесения: ',font=('Calibri',25),background="#D29CFF").grid(row=1,sticky=N)
+    lbl_current_balance = Label(window_deposite,text='Текущий баланс: '+ details_balance,font=('Calibri',25),background="#D29CFF")
     lbl_current_balance.grid(row=0,sticky=N)
-    ent_summa = Entry(window_deposite, textvariable=summa)
+    ent_summa = Entry(window_deposite, textvariable=summa,width=25)
     ent_summa.grid(row=1,column=1)
-    btn_deposite = Button(window_deposite, text='Внести', font=('Calibri',12),width=10, command=deposite)
-    btn_exit_deposite = Button(window_deposite, text='Закрыть', font=('Calibri',12),width=10, command=f_exit_deposite)
+    btn_deposite = Button(window_deposite, background="#D29CFF", image=i_ok, command=deposite)
+    btn_exit_deposite = Button(window_deposite,background="#D29CFF", image=i_close, command=f_exit_deposite)
     btn_deposite.grid(row=2,sticky=W)
     btn_exit_deposite.grid(row=2,sticky=W, column=1)
 
@@ -102,14 +122,16 @@ def f_withrow():
     print(details_balance)
     window_withrow = Toplevel(window_main)
     window_withrow.title('Вывод средств')
-    Label(window_withrow,text='Сумма: ',font=('Calibri',14)).grid(row=1,sticky=N)
-    lbl_current_balance = Label(window_withrow,text='Текущий баланс: '+ details_balance,font=('Calibri',14))
+    window_withrow.geometry('720x350')
+    window_withrow["bg"] = "#D29CFF"
+    Label(window_withrow,text='Сумма: ',font=('Calibri',18),background="#D29CFF").grid(row=1,sticky=N)
+    lbl_current_balance = Label(window_withrow,text='Текущий баланс: '+ details_balance,font=('Calibri',18),background="#D29CFF")
     lbl_current_balance.grid(row=0,sticky=N)
-    btn_w50 = Button(window_withrow, text='50', font=('Calibri',12),width=10, command=f_w50)
-    btn_w100 = Button(window_withrow, text='100', font=('Calibri',12),width=10, command=f_w100)
-    btn_w500 = Button(window_withrow, text='500', font=('Calibri',12),width=10, command=f_w500)
-    btn_w1000 = Button(window_withrow, text='1000', font=('Calibri',12),width=10, command=f_w1000)
-    btn_exit_withrow = Button(window_withrow, text='Закрыть', font=('Calibri',12),width=10, command=f_exit_withrow)
+    btn_w50 = Button(window_withrow, image=i_50, command=f_w50,background="#D29CFF")
+    btn_w100 = Button(window_withrow, image=i_100, command=f_w100,background="#D29CFF")
+    btn_w500 = Button(window_withrow, image=i_500, command=f_w500,background="#D29CFF")
+    btn_w1000 = Button(window_withrow, image=i_1000, command=f_w1000,background="#D29CFF")
+    btn_exit_withrow = Button(window_withrow,image=i_close,background="#D29CFF", command=f_exit_withrow)
     btn_w50.grid(row=2,sticky=W)
     btn_w100.grid(row=3,sticky=W)
     btn_w500.grid(row=4,sticky=W)
@@ -316,16 +338,19 @@ def f_ok():
                     ent_pin.config(textvariable='')
                     window_user = Toplevel(window_main)
                     window_user.title('Мой кабинет')
-                    Label(window_user, text='Банкомат №C128', font=('Calibri',14)).grid(row=0,sticky=N)
-                    Label(window_user, text='Добро пожаловать!', font=('Calibri',14)).grid(row=1,sticky=N)
-                    btn_balance = Button(window_user, text='Баланс', font=('Calibri',12),width=20,command=f_balance)
-                    btn_deposite = Button(window_user, text='Ввод средств', font=('Calibri',12),width=20,command=f_deposite)
-                    btn_withrow = Button(window_user, text='Вывод средств', font=('Calibri',12),width=20,command=f_withrow)
-                    btn_close = Button(window_user, text='Завершить сеанс', font=('Calibri',12),width=20,command=f_close)
-                    btn_balance.grid(row=2,sticky=N)
-                    btn_deposite.grid(row=3,sticky=N)
-                    btn_withrow.grid(row=4,sticky=N)
-                    btn_close.grid(row=5,sticky=N)
+                    window_user.geometry('720x350')
+                    window_user["bg"] = "#D29CFF"
+                    Label(window_user, text='Добро пожаловать!', font=('Calibri',14),background="#D29CFF").grid(row=5,sticky=N)
+                    btn_balance = Button(window_user, text='Баланс', font=('Calibri',12),command=f_balance,image=i_balance,background="#D29CFF")
+                    btn_deposite = Button(window_user, text='Ввод средств',image=i_deposite,background="#D29CFF",command=f_deposite)
+                    btn_withrow = Button(window_user, text='Вывод средств',image=i_withrow,background="#D29CFF",command=f_withrow)
+                    btn_close = Button(window_user, text='Завершить сеанс',image=i_close,background="#D29CFF",command=f_close)
+                    logo = Label(window_user, image=i_logo,background="#D29CFF")
+                    logo.grid(row=1,sticky=W,column=0)
+                    btn_balance.grid(row=0,sticky=NW,column=0)
+                    btn_deposite.grid(row=1,sticky=N,column=1)
+                    btn_withrow.grid(row=1,sticky=N,column=2)
+                    btn_close.grid(row=0,sticky=NE,column=5)
                     return
             else:
                 new_file = open(pin_code,'w')
@@ -336,26 +361,28 @@ def f_ok():
             ent_pin.delete(0,4)
             window_user = Toplevel(window_main)
             window_user.title('Админ')
-            lbl_n50 = Label(window_user, text='Кол-во купюр по 50: ' + str(n50), font=('Calibri',14))
+            window_user.geometry('720x350')
+            window_user["bg"] = "#D29CFF"
+            lbl_n50 = Label(window_user, text='Кол-во купюр по 50: ' + str(n50), font=('Calibri',14),background="#D29CFF")
             lbl_n50.grid(column=0,row=0)
             btn_plus50 = Button(window_user, text='+',command=plus_n50)
             btn_plus50.grid(column=1,row=0)
-            lbl_n100 = Label(window_user, text='Кол-во купюр по 100: ' + str(n100), font=('Calibri',14))
+            lbl_n100 = Label(window_user, text='Кол-во купюр по 100: ' + str(n100), font=('Calibri',14),background="#D29CFF")
             lbl_n100.grid(column=0,row=1)
             btn_plus100 = Button(window_user, text='+',command=plus_n100)
             btn_plus100.grid(column=1,row=1)
-            lbl_n500 = Label(window_user, text='Кол-во купюр по 500: ' + str(n500), font=('Calibri',14))
+            lbl_n500 = Label(window_user, text='Кол-во купюр по 500: ' + str(n500), font=('Calibri',14),background="#D29CFF")
             lbl_n500.grid(column=0,row=2)
             btn_plus500 = Button(window_user, text='+',command=plus_n500)
             btn_plus500.grid(column=1,row=2)
-            lbl_n1000 = Label(window_user, text='Кол-во купюр по 1000: ' + str(n1000), font=('Calibri',14))
+            lbl_n1000 = Label(window_user, text='Кол-во купюр по 1000: ' + str(n1000), font=('Calibri',14),background="#D29CFF")
             lbl_n1000.grid(column=0,row=3)
             btn_plus1000 = Button(window_user, text='+',command=plus_n1000)
             btn_plus1000.grid(column=1,row=3)
-            btn_close = Button(window_user, text='Завершить сеанс', font=('Calibri',12),width=20,command=f_close)
+            btn_close = Button(window_user, image=i_close,command=f_close,background="#D29CFF")
             btn_close.grid(row=4,column=0)
-            btn_logg = Button(window_user, text='Логи', font=('Calibri',12),width=20,command=f_logg)
-            btn_logg.grid(row=4,column=1)
+            btn_logg = Button(window_user, image=i_logg,command=f_logg,background="#D29CFF")
+            btn_logg.grid(row=5,column=0)
 
     else:
         mb_len_code()             
@@ -377,13 +404,16 @@ def mb_non_valute():
                 "Ошибка!!!", 
                 "Извните, но в данный момент в банкомте отстутствует купюра данного номинала")                                      
 
-
-txt_head = Label(window_main, text='Банкомат готов к работе!', font=('Calibri',14))
-txt_head.grid(row=0, sticky=N)
-btn_start = Button(window_main, text='Начать!', font=('Calibri',12),width=20, command=f_start)
-btn_start.grid(row=3, sticky=N)
-btn_ok = Button(window_main, text='Ок!', font=('Calibri',12),width=20,command=f_ok)
-ent_pin = Entry(window_main,font=('Calibri',12),width=20, show="*")
+logo = Label(window_main, image=i_logo,background="#D29CFF")
+logo.grid(row=0,sticky=N,column=5)
+txt_head = Label(window_main, text='Банкомат готов к работе!', font=('Calibri',14),background="#D29CFF",fg='#45007F')
+txt_head.grid(row=1, sticky=N,column=5)
+btn_start = Button(window_main, text='Начать!', font=('Calibri',12),image=i_ready, command=f_start,background="#D29CFF")
+btn_start.grid(row=3, sticky=N,column=5)
+btn_ok = Button(window_main, text='Ок!', font=('Calibri',12),command=f_ok,image=i_ok,background="#D29CFF")
+ent_pin = Entry(window_main,font=('Calibri',12),width=20, show="*",background='#6600BA')
+btn_ = Label(window_main,background='#D29CFF',image=i_156)
+btn_.grid(row=8, sticky=N,column=0)
 
 logging.basicConfig(level=logging.INFO, filename="py_log.log",filemode="a",
                     format="%(asctime)s %(levelname)s %(message)s")
