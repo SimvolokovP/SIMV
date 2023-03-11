@@ -9,14 +9,10 @@ public class _6 {
 
     }
     public static boolean isPrime(int number) {
-        for (int i = 2; i < number; i ++) {
+        for (int i = 2; i < number; i ++)
             if (number % i == 0) {
                 return false;
             }
-            else {
-                return true;
-            }
-        }
         return true;
     }
 }

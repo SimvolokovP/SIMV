@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class _3 {
@@ -15,8 +16,15 @@ public class _3 {
         float yc = scanner.nextInt();
         float[] c = {xc,yc};
         System.out.println("coordinates of third: " + "[" + c[0] + "," + c[1] + "]");
-        float x0 = (xa + xb + xc)/3;
-        System.out.println(x0);
+        float[] answer = {0,0};
+        System.out.println("Answer: ");
+        System.out.println(Arrays.toString(search(a, b, c, answer)));
     }
-
+    public static float[] search(float[] one, float[] two, float[] three, float[] result) {
+        float x0 = (one[0] + two[0] + three[0])/(3);
+        float y0 = (one[1] + two[1] + three[1])/(3);
+        result[0] = x0;
+        result[1] = y0;
+        return result;
+    }
 }
