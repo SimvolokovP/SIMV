@@ -1,16 +1,18 @@
+package ex11;
+
 import java.util.Scanner;
 
-public class _11 {
+public class replace {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the string: ");
         String str = scanner.nextLine();
         String[] letters = {"a", "o","e","y","i","u"};
-        System.out.println(replace(str, letters));
+        System.out.println(replaceletter(str, letters));
     }
-    public static String replace(String s, String[] array) {
-        for (int i = 0; i < array.length; i ++) {
-                s = s.replace(array[i],"");
+    public static String replaceletter(String s, String[] array) {
+        for (String value : array) {
+            s = s.replace(value, "");
         }
         return s;
     }

@@ -1,6 +1,8 @@
+package ex5;
+
 import java.util.Scanner;
 
-public class _5 {
+public class summa {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the size of array: ");
@@ -20,5 +22,3 @@ public class _5 {
         return result;
     }
 }
-
-

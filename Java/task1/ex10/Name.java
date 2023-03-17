@@ -1,6 +1,8 @@
+package ex10;
+
 import java.util.Scanner;
 
-public class _10 {
+public class Name {
     public static void main(String[] args) {
         System.out.print("Enter the name: ");
         Scanner scanner = new Scanner(System.in);

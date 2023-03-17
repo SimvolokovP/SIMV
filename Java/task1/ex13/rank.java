@@ -1,6 +1,8 @@
+package ex13;
+
 import java.util.Scanner;
 
-public class _13 {
+public class rank {
     public static void main(String [] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the start number: ");
@@ -15,7 +17,8 @@ public class _13 {
         int value = 0;
         for (int i = s; value != n; i += x ) {
             value += 1;
-            System.out.println(i);
+            System.out.print(i + " ");
         }
     }
 }
+

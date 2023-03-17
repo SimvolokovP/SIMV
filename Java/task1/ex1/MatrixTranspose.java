@@ -1,6 +1,8 @@
+package ex1;
+
 import java.util.Scanner;
 
-public class _1 {
+public class MatrixTranspose {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Input row of matrix: ");
@@ -12,6 +14,7 @@ public class _1 {
 
         for (int i = 0; i < row; i ++) {
             for (int j = 0; j < column; j ++) {
+                System.out.print("Enter the element of mtx: ");
                 b[i][j] = scanner.nextInt();
             }
         }
@@ -28,3 +31,4 @@ public class _1 {
         }
     }
 }
+

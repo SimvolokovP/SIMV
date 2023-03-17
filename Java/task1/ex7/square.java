@@ -1,6 +1,8 @@
+package ex7;
+
 import java.util.Scanner;
 
-public class _7 {
+public class square {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the number: ");

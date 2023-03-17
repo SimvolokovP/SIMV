@@ -1,11 +1,16 @@
+package ex8;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class _8 {
+public class Triangle {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the first side: ");
         int x = scanner.nextInt();
+        System.out.print("Enter the second side: ");
         int y = scanner.nextInt();
+        System.out.print("Enter the third side: ");
         int z = scanner.nextInt();
         if (check(x, y, z)) {
             System.out.println("Triangle is exists!");
@@ -30,3 +35,4 @@ public class _8 {
     }
 
 }
+

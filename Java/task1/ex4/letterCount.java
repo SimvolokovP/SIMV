@@ -1,6 +1,8 @@
+package ex4;
+
 import java.util.Scanner;
 
-public class _4 {
+public class letterCount {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the string: ");
@@ -21,3 +23,4 @@ public class _4 {
         return number;
     }
 }
+

@@ -1,6 +1,8 @@
+package ex16;
+
 import java.util.Scanner;
 
-public class _16 {
+public class correctString {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the string: ");
@@ -37,3 +39,4 @@ public class _16 {
         return 0;
     }
 }
+

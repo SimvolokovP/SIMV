@@ -1,9 +1,11 @@
+package ex15;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-public class _15 {
+public class deleteLetter {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the string: ");
@@ -23,3 +25,4 @@ public class _15 {
         }
     }
 }
+
