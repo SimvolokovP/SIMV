@@ -7,7 +7,7 @@ public class replace {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the string: ");
         String str = scanner.nextLine();
-        String[] letters = {"a", "o","e","y","i","u"};
+        String[] letters = {"a", "o","e","y","i","u","A","O","E","Y","I","U"};
         System.out.println(replaceletter(str, letters));
     }
     public static String replaceletter(String s, String[] array) {

@@ -23,7 +23,7 @@ public class range {
             max = a;
         }
         for (int i = min; i <= max; i +=min) {
-            System.out.print(i*i + " ");
+            System.out.print((int) Math.pow(i,2) + " ");
         }
     }
 }

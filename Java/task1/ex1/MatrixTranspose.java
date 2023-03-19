@@ -18,6 +18,7 @@ public class MatrixTranspose {
                 b[i][j] = scanner.nextInt();
             }
         }
+
         for (int i = 0; i < a.length; i ++) {
             for (int j = 0; j < a[i].length; j++) {
                 a[i][j] = b[j][i];

@@ -10,9 +10,9 @@ public class square {
         range(number);
     }
     public static void range(int n) {
-        for (int i = 0; i*i < n; i ++) {
-            System.out.println(i*i + "(" + i + ")");
-        }
-
+        int i = 0;
+        for (; Math.pow(i,2) < n; i++);
+        i--;
+        System.out.println((int)Math.pow(i, 2) + "(" + i + ")");
     }
 }

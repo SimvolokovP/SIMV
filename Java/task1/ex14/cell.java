@@ -1,28 +1,29 @@
 package ex14;
 
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 public class cell {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int[] array = new int[3];
-        for (int i = 0; i < array.length; i++) {
-            System.out.print("Enter the number: ");
-            int number = scanner.nextInt();
+        System.out.println("Input 3 strings:");
 
-            if (i == 0 || number > array[0]) {
-                array[2] = array[1];
-                array[1] = array[0];
-                array[0] = number;
-            } else if (i == 1 || number > array[1]) {
-                array[2] = array[1];
-                array[1] = number;
-            } else {
-                array[2] = number;
-            }
+        int[] arr = new int[3];
+        for (int i = 0; i < 3; ++i) {
+            String s = scanner.nextLine();
+            if (!s.isEmpty())
+                arr[i] = Integer.parseInt(s);
+            else
+                arr[i] = Integer.MAX_VALUE;
         }
-        System.out.println(Arrays.toString(array));
+
+        int m = Arrays.stream(arr).min().getAsInt();
+
+        for (int i = 0; i < 3; ++i)
+            if (arr[i] == Integer.MAX_VALUE)
+                arr[i] = m;
+
+        for (int i: arr) {
+            System.out.println(i);
+        }
     }
 }
-

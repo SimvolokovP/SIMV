@@ -17,7 +17,7 @@ public class Triangle {
             System.out.println(corner(x,y,z));
         }
         else {
-            System.out.println("Triangle is not exists!");
+            System.out.println("Triangle is not exists!((((");
         }
     }
 
@@ -28,9 +28,9 @@ public class Triangle {
 
     public static double corner(int a, int b, int c) {
         double[] array = new double[3];
-        array[0] = Math.toDegrees(Math.cos(Math.pow(a, 2) + Math.pow(c, 2) - Math.pow(b, 2) / (2 * a * c)));
-        array[1] = Math.toDegrees(Math.cos(Math.pow(a, 2) + Math.pow(b, 2) - Math.pow(c, 2) / (2 * a * c)));
-        array[0] = Math.toDegrees(Math.cos(Math.pow(b, 2) + Math.pow(c, 2) - Math.pow(a, 2) / (2 * a * c)));
+        array[0] = Math.toDegrees(Math.acos((Math.pow(a, 2) + Math.pow(c, 2) - Math.pow(b, 2)) / (2 * a * c)));
+        array[1] = Math.toDegrees(Math.acos((Math.pow(a, 2) + Math.pow(b, 2) - Math.pow(c, 2)) / (2 * a * b)));
+        array[2] = Math.toDegrees(Math.acos((Math.pow(b, 2) + Math.pow(c, 2) - Math.pow(a, 2)) / (2 * b * c)));
         return (180 - Arrays.stream(array).min().getAsDouble());
     }
 

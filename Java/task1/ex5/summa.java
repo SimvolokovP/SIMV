@@ -17,7 +17,7 @@ public class summa {
         for (int i = 0; i < arr.length; i++) {
             System.out.print("Enter the " + (i + 1) + " element of array: ");
             arr[i] = scanner.nextInt();
-            result += arr[i] * arr[i];
+            result += Math.pow(arr[i], 2);
         }
         return result;
     }
