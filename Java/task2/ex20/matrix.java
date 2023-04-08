@@ -9,6 +9,8 @@ public class matrix {
         int m = scanner.nextInt();
         int n = scanner.nextInt();
         scanner.close();
+        
+        
         int[][] mtx = new int[m][n];
             for (int i = 0; i < m; i++) {
                 for (int j = 0; j < n; j++) {
@@ -37,9 +39,7 @@ public class matrix {
                 writer.write("\n");
             }
             writer.close();
-            System.out.println("Array saved to file.");
         } catch (IOException ext) {
-            System.out.println("An error occurred while writing to the file.");
             ext.printStackTrace();
         }
     }
