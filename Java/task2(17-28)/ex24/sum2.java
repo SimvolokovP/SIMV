@@ -20,7 +20,7 @@ public class sum2 {
         for (int d : div) {
             int summa = 0;
             for (int i = m; i <= n; i ++ ) {
-                if (i % div[i] == 0) {
+                if (i % d == 0) {
                     summa += i;
                 }
             }
