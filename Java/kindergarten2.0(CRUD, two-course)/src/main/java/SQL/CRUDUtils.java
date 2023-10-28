@@ -66,6 +66,7 @@ public class CRUDUtils {
                 String childList = rs.getString(4);
                 list.add(new Group(id,name,number));
 
+
             }
             connection.close();
         } catch (SQLException e) {
@@ -100,6 +101,16 @@ public class CRUDUtils {
         }
     }
 
+    public static void removeGroup(int id) {
+        Connection connection = DBUtils.getConnection();
+        try {
+            Statement statement = connection.createStatement();
+            statement.execute("DELETE FROM mydb.groups WHERE id=" + id);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public static void save(Group group) {
         String query = "INSERT into mydb.groups(name, number) VALUES (?,?)";
 
@@ -117,32 +128,110 @@ public class CRUDUtils {
 
     }
 
-
-
-    public static void add(int groupIndex, int childIndex, String columnName) {
-        Connection connection = DBUtils.getConnection();
-        try {
-            Statement statement = connection.createStatement();
-            statement.execute("ALTER TABLE mydb.groups ADD COLUMN " + columnName + " INT NOT NULL AFTER childlist");
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-
-        String query = "UPDATE mydb.groups SET " + columnName + " = ? WHERE ID=?";
+    public  static  void updateGroup(int id, String newGroupName) {
+        String query = "UPDATE mydb.groups SET name = ? WHERE ID=?";
 
         try {
-
+            Connection connection = DBUtils.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1,childIndex);
-            preparedStatement.setInt(2,groupIndex);
-
+            preparedStatement.setString(1,newGroupName);
+            preparedStatement.setInt(2,id);
             preparedStatement.executeUpdate();
             connection.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);}
 
     }
+
+    public  static  void updateGroup(int id, int newNumber) {
+        String query = "UPDATE mydb.groups SET number = ? WHERE ID=?";
+
+        try {
+            Connection connection = DBUtils.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1,newNumber);
+            preparedStatement.setInt(2,id);
+            preparedStatement.executeUpdate();
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);}
+
+    }
+
+    public  static  void updateChild(int id, String name) {
+        String query = "UPDATE mydb.childlist SET name = ? WHERE ID=?";
+
+        try {
+            Connection connection = DBUtils.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1,name);
+            preparedStatement.setInt(2,id);
+            preparedStatement.executeUpdate();
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);}
+
+    }
+
+    public  static  void updateChild(int id, int age) {
+        String query = "UPDATE mydb.childlist SET age = ? WHERE ID=?";
+
+        try {
+            Connection connection = DBUtils.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1,age);
+            preparedStatement.setInt(2,id);
+            preparedStatement.executeUpdate();
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);}
+
+    }
+
+    public static void add(int groupIndex, int childIndex, Group group) {
+
+        List<String> childList = group.getChildList();
+        childList.add(String.valueOf(childIndex));
+
+
+        String query = "UPDATE mydb.groups SET childlist= ? WHERE id = ?";
+        try {
+            Connection connection = DBUtils.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1,childList.toString());
+            preparedStatement.setInt(2,groupIndex);
+            preparedStatement.executeUpdate();
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);}
+
+
+    }
+
+//    public static void add(int groupIndex, int childIndex, String columnName) {
+//        Connection connection = DBUtils.getConnection();
+//        try {
+//            Statement statement = connection.createStatement();
+//            statement.execute("ALTER TABLE mydb.groups ADD COLUMN " + columnName + " INT NOT NULL AFTER childlist");
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//
+//
+//        String query = "UPDATE mydb.groups SET " + columnName + " = ? WHERE ID=?";
+//
+//        try {
+//
+//            PreparedStatement preparedStatement = connection.prepareStatement(query);
+//            preparedStatement.setInt(1,childIndex);
+//            preparedStatement.setInt(2,groupIndex);
+//
+//            preparedStatement.executeUpdate();
+//            connection.close();
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);}
+//
+//    }
 
 
 }

@@ -1,11 +1,14 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Group {
     private int id;
     private String name;
     private int number;
+    private List<String> childList = new ArrayList<>();
+
 
 
     public Group(int id, String name, int number) {
@@ -44,7 +47,9 @@ public class Group {
         this.number = number;
     }
 
-
+    public List<String> getChildList() {
+        return childList;
+    }
 
     @Override
     public String toString() {
@@ -52,6 +57,7 @@ public class Group {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", number=" + number +
+                ", childList=" + childList +
                 '}';
     }
 }
