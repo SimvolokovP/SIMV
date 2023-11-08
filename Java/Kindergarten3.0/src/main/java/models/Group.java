@@ -1,21 +1,14 @@
-package model;
-
-import java.util.ArrayList;
-import java.util.List;
+package models;
 
 public class Group {
     private int id;
     private String name;
     private int number;
-    private List<String> childList = new ArrayList<>();
-
-
 
     public Group(int id, String name, int number) {
         this.id = id;
         this.name = name;
         this.number = number;
-
     }
 
     public Group(String name, int number) {
@@ -47,17 +40,12 @@ public class Group {
         this.number = number;
     }
 
-    public List<String> getChildList() {
-        return childList;
-    }
-
     @Override
     public String toString() {
         return "Group{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", number=" + number +
-                ", childList=" + childList +
                 '}';
     }
 }

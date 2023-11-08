@@ -1,4 +1,5 @@
-package SQL;
+package Sql;
+
 
 
 import com.mysql.cj.jdbc.NonRegisteringDriver;
@@ -13,7 +14,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class DBUtils {
-    private static final String dbURL = "jdbc:mysql://localhost:3306/mydb";
+    private static final String dbURL = "jdbc:mysql://localhost:3306/kindergarten";
     private static final String dbUsername = "admin";
     private static final String dbPassword = "admin";
     public static Connection getConnection() {
@@ -29,4 +30,5 @@ public class DBUtils {
         return connection;
     }
 }
+
 
